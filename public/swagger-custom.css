@@ -1,0 +1,41 @@
+*, span, div {
+    color: white;
+}
+
+.swagger-ui {
+    background-color: #2e2e2e; /* To'q kulrang fon */
+    color: #e0e0e0; /* Yorqin kulrang matn */
+}
+
+.swagger-ui .topbar {
+    background-color: #3b3b3b; /* Yorqinroq qora */
+}
+
+.swagger-ui .info .title {
+    color: #f0f0f0; /* Oq rang matn */
+}
+
+.swagger-ui .tag {
+    background-color: #4f4f4f; /* Yorqinroq kulrang fon */
+    color: #e0e0e0; /* Yorqin kulrang matn */
+}
+
+.swagger-ui .btn {
+    background-color: #5a5a5a; /* Orta to'q kulrang */
+    color: #e0e0e0; /* Yorqin kulrang matn */
+}
+
+.swagger-ui input, .swagger-ui textarea {
+    background-color: #3a3a3a; /* Kul rang fon */
+    color: #e0e0e0; /* Yorqin kulrang matn */
+    border: 1px solid #4f4f4f; /* To'qroq kulrang chegara */
+}
+
+.swagger-ui .expand-btn {
+    background-color: #4f4f4f; /* Yorqinroq kulrang */
+    color: #e0e0e0; /* Yorqin kulrang matn */
+}
+
+.swagger-ui .error {
+    color: #ff7f7f; /* Yorqin qizil */
+}

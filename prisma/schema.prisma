@@ -1,0 +1,96 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model School {
+  id       Int        @id @default(autoincrement())
+  number   Int
+  image    String
+  director Director[]
+  class    Class[]
+  student  Student[]
+}
+
+model Director {
+  id        Int    @id @default(autoincrement())
+  firstName String
+  lastName  String
+  school    School @relation(fields: [schoolId], references: [id])
+  schoolId  Int
+  username  String @unique
+  password  String
+  avatar    String
+}
+
+model Lesson {
+  id         Int     @id @default(autoincrement())
+  title      String
+  homework   String
+  lessonTime Int
+  lessonDate String
+  teacher    Teacher @relation(fields: [teacherId], references: [id])
+  teacherId  Int
+  marks      Marks[]
+}
+
+model Teacher {
+  id        Int      @id @default(autoincrement())
+  firstName String
+  lastName  String
+  username  String   @unique
+  password  String
+  job       String
+  avatar    String
+  lessons   Lesson[]
+  marks     Marks[]
+}
+
+model Class {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String
+  school      School    @relation(fields: [schoolId], references: [id])
+  schoolId    Int
+  student     Student[]
+}
+
+model Student {
+  id         Int     @id @default(autoincrement())
+  firstName  String
+  lastName   String
+  telegramId Int
+  username   String  @unique
+  password   String
+  avatar     String
+  marks      Marks[]
+  school     School  @relation(fields: [schoolId], references: [id])
+  schoolId   Int
+  class      Class   @relation(fields: [classId], references: [id])
+  classId    Int
+}
+
+model Marks {
+  id        Int     @id @default(autoincrement())
+  lesson    Lesson  @relation(fields: [lessonId], references: [id])
+  lessonId  Int
+  mark      Int
+  teacher   Teacher @relation(fields: [teacherId], references: [id])
+  teacherId Int
+  student   Student @relation(fields: [studentId], references: [id])
+  studentId Int
+}
+
+model LessonTime {
+  id   Int    @id @default(autoincrement())
+  time String
+}
+
+model Subject {
+  id   Int    @id @default(autoincrement())
+  name String
+}
